@@ -1,28 +1,26 @@
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <meta lang="ru">
-    <title>Channels Training</title>
-</head>
-<body>
-<label for="room-name-input">Введите название комнаты, в которую хотите войти</label>
-<br>
-<input id="room-name-input" type="text" size="20"><br>
-<input id="room-name-submit" type="button" value="Войти">
+{% extends 'chat/base.html' %}
 
-<script>
-    document.querySelector('#room-name-input').focus();
+{% block content %}
+    <label for="room-name-input">Введите название комнаты, в которую хотите войти</label>
+    <br>
+    <input id="room-name-input" type="text" size="20">
+    <br>
+    <input id="room-name-submit" type="button" value="Войти">
+{% endblock %}
 
-    document.querySelector('#room-name-input').onkeyup = event => {
-        if (event.keyCode === 13) {
-            document.querySelector('#room-name-submit').click();
-        }
-    };
+{% block scripts %}
+    <script>
+        document.querySelector('#room-name-input').focus();
 
-    document.querySelector('#room-name-submit').onclick = () => {
-        let roomName = document.querySelector('#room-name-input').value;
-        window.location.pathname = '/chat/' + roomName + '/';
-    };
-</script>
-</body>
-</html>
+        document.querySelector('#room-name-input').onkeyup = event => {
+            if (event.keyCode === 13) {
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = () => {
+            let roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+{% endblock %}

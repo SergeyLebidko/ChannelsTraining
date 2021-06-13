@@ -1,0 +1,49 @@
+{% extends 'chat/base.html' %}
+
+{% block content %}
+    <!-- Элемент для вывода всех сообщений чата -->
+    <textarea id="chat-log" cols="100" rows="20"></textarea>
+    <br>
+
+    <!-- Поле для ввода очередного сообщения -->
+    <label for="chat-message-input">Введите сообщение:</label>
+    <br>
+    <input id="chat-message-input" type="text" size="100">
+    <br>
+
+    <input id="chat-message-submit" type="button" value="Отправить">
+    {{ room_name|json_script:"room-name" }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+
+        const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
+
+        chatSocket.onmessage = event => {
+            const data = JSON.parse(event.data);
+            document.querySelector('#chat-log').value += (data.message + '\n');
+        };
+
+        chatSocket.onclose = () => {
+            console.error('WebSocket чата неожиданно закрылся...');
+        };
+
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = event => {
+            if (event.keyCode === 13) {
+                document.querySelector('#chat-message-submit').click();
+            }
+        };
+
+        document.querySelector('#chat-message-submit').onclick = () => {
+            const messageInputDom = document.querySelector('#chat-message-input');
+            const message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInputDom.value = '';
+        };
+    </script>
+{% endblock %}
