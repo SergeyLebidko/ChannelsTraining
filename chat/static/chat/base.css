@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(230, 230, 230);
+    padding: 20px;
+}
+
+.container {
+    background-color: white;
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 3px 7px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container * + * {
+    margin-top: 10px;
+}
+
+.small-container {
+    max-width: 300px;
+}
+
+.big-container {
+    max-width: 800px;
+}
+
+.container input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    outline: none;
+    border: 1px solid lightgray;
+}
+
+.container textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    outline: none;
+    border: 1px solid lightgray;
+}
+
+input[type=button] {
+    padding: 5px 15px;
+}

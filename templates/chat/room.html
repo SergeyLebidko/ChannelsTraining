@@ -1,18 +1,20 @@
 {% extends 'chat/base.html' %}
 
 {% block content %}
-    <!-- Элемент для вывода всех сообщений чата -->
-    <textarea id="chat-log" cols="100" rows="20"></textarea>
-    <br>
+    <div class="container big-container">
+        <!-- Элемент для вывода всех сообщений чата -->
+        <textarea id="chat-log" rows="20"></textarea>
+        <br>
 
-    <!-- Поле для ввода очередного сообщения -->
-    <label for="chat-message-input">Введите сообщение:</label>
-    <br>
-    <input id="chat-message-input" type="text" size="100">
-    <br>
+        <!-- Поле для ввода очередного сообщения -->
+        <label for="chat-message-input">Введите сообщение:</label>
+        <br>
+        <input id="chat-message-input" type="text" size="100">
+        <br>
 
-    <input id="chat-message-submit" type="button" value="Отправить">
-    {{ room_name|json_script:"room-name" }}
+        <input id="chat-message-submit" type="button" value="Отправить">
+        {{ room_name|json_script:"room-name" }}
+    </div>
 {% endblock %}
 
 {% block scripts %}
