@@ -1,13 +1,20 @@
+:root {
+    --border-radius: 5px;
+    --big-padding: 20px;
+    --medium-padding: 10px;
+    --small-padding: 5px;
+}
+
 body {
     background-color: rgb(230, 230, 230);
-    padding: 20px;
+    padding: var(--big-padding);
 }
 
 .container {
     background-color: white;
     margin: auto;
-    padding: 10px;
-    border-radius: 5px;
+    padding: var(--medium-padding);
+    border-radius: var(--border-radius);
     box-shadow: 0 3px 7px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -16,29 +23,31 @@ body {
 }
 
 .small-container {
-    max-width: 300px;
+    max-width: 400px;
 }
 
 .big-container {
     max-width: 800px;
 }
 
+.chat-log {
+    padding: var(--medium-padding);
+    background-color: LightGrey;
+    border-radius: var(--border-radius);
+    height: 400px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .container input[type=text] {
     width: 100%;
     box-sizing: border-box;
-    padding: 5px;
+    padding: var(--small-padding);
     outline: none;
     border: 1px solid lightgray;
-}
-
-.container textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5px;
-    outline: none;
-    border: 1px solid lightgray;
+    border-radius: var(--border-radius);
 }
 
 input[type=button] {
-    padding: 5px 15px;
+    padding: var(--small-padding) var(--medium-padding);
 }
