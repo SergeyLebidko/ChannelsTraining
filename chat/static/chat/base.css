@@ -79,14 +79,13 @@ body {
 }
 
 .message-block {
-    background-color: dodgerblue;
     border-radius: var(--border-radius);
     color: white;
     padding: var(--medium-padding) var(--big-padding);
     width: 60%;
 }
 
-.message-block > p{
+.message-block > p {
     margin: 0;
     word-wrap: break-word;
 }
@@ -97,5 +96,11 @@ body {
 }
 
 .our-message {
+    background-color: dodgerblue;
     align-self: flex-end;
+}
+
+.other-message {
+    background-color: ForestGreen;
+    align-self: flex-start;
 }

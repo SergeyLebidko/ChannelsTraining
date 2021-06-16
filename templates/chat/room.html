@@ -14,7 +14,7 @@
 
 {% block scripts %}
     <script>
-        const {roomName} = JSON.parse(document.getElementById('data').textContent);
+        const {roomName, username} = JSON.parse(document.getElementById('data').textContent);
 
         const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
 
@@ -27,8 +27,18 @@
                 `<h5>${data.username}</h5><p>${data.message}</p>`
             );
 
-            messageBlock.classList.add('message-block', 'our-message');
+            messageBlock.classList.add('message-block');
+            if (data.username === username) {
+                messageBlock.classList.add('our-message');
+            } else {
+                messageBlock.classList.add('other-message');
+            }
+
             document.querySelector('.chat-log').append(messageBlock);
+
+            // При получении сообщения прокручиваем окно чата вниз
+            let logElement = document.querySelector('.chat-log');
+            logElement.scrollTo(0, logElement.scrollHeight);
         };
 
         chatSocket.onclose = () => {
