@@ -45,7 +45,7 @@ body {
 
 .chat-log {
     padding: var(--medium-padding);
-    background-color: LightGrey;
+    background-color: rgb(235, 235, 235);
     border-radius: var(--border-radius);
     height: 400px;
     width: 100%;
@@ -53,10 +53,29 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    overflow: auto;
 }
 
 .chat-log > .message_block + .message_block {
     margin-top: 10px;
+}
+
+.chat-log::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+.chat-log::-webkit-scrollbar-thumb {
+    border-radius: var(--border-radius);
+    background-color: lightgray;
+}
+
+.chat-log:hover::-webkit-scrollbar-thumb {
+    background-color: dimgray;
+}
+
+.chat-log::-webkit-scrollbar-corner {
+    border-radius: var(--border-radius);
 }
 
 .message-block {
