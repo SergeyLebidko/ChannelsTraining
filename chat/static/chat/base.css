@@ -83,7 +83,7 @@ body {
     border-radius: var(--border-radius);
     color: white;
     padding: var(--medium-padding) var(--big-padding);
-    width: 80%;
+    width: 60%;
 }
 
 .our-message {
