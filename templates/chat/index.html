@@ -3,9 +3,7 @@
 {% block content %}
     <div class="container small-container">
         <label for="room-name-input">Введите название комнаты, в которую хотите войти</label>
-        <br>
         <input id="room-name-input" type="text" size="20">
-        <br>
         <input id="room-name-submit" type="button" value="Войти">
     </div>
 {% endblock %}
@@ -22,7 +20,22 @@
 
         document.querySelector('#room-name-submit').onclick = () => {
             let roomName = document.querySelector('#room-name-input').value;
+            if (!validateRoomName(roomName)) return;
             window.location.pathname = '/chat/' + roomName + '/';
         };
+
+        function validateRoomName(roomName) {
+            if (roomName.trim() === '') return false;
+
+            const digits = '0123456789';
+            if (digits.includes(roomName[0])) return false;
+
+            const allowLetters = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm_' + digits;
+            for (let letter of roomName) {
+                if (!allowLetters.includes(letter)) return false;
+            }
+
+            return true;
+        }
     </script>
 {% endblock %}
