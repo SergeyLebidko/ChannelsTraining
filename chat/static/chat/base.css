@@ -22,6 +22,19 @@ body {
     margin-top: 10px;
 }
 
+.container input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: var(--small-padding);
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: var(--border-radius);
+}
+
+.container input[type=button] {
+    padding: var(--small-padding) var(--medium-padding);
+}
+
 .small-container {
     max-width: 400px;
 }
@@ -37,17 +50,23 @@ body {
     height: 400px;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.container input[type=text] {
-    width: 100%;
-    box-sizing: border-box;
-    padding: var(--small-padding);
-    outline: none;
-    border: 1px solid lightgray;
+.chat-log > .message_block + .message_block {
+    margin-top: 10px;
+}
+
+.message-block {
+    background-color: dodgerblue;
     border-radius: var(--border-radius);
+    color: white;
+    padding: var(--medium-padding) var(--big-padding);
+    width: 80%;
 }
 
-input[type=button] {
-    padding: var(--small-padding) var(--medium-padding);
+.our-message {
+    align-self: flex-end;
 }

@@ -3,9 +3,7 @@
 {% block content %}
     <div class="container big-container">
         <!-- Элемент для вывода всех сообщений чата -->
-        <div class="chat-log">
-
-        </div>
+        <div class="chat-log"></div>
 
         <input id="chat-message-input" type="text" size="100">
         <input id="chat-message-submit" type="button" value="Отправить">
@@ -22,7 +20,10 @@
 
         chatSocket.onmessage = event => {
             const data = JSON.parse(event.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
+            let messageBlock = document.createElement('div');
+            messageBlock.textContent = data.message;
+            messageBlock.classList.add('message-block', 'our-message');
+            document.querySelector('.chat-log').append(messageBlock);
         };
 
         chatSocket.onclose = () => {
