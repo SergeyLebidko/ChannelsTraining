@@ -8,13 +8,13 @@
         <input id="chat-message-input" type="text" size="100">
         <input id="chat-message-submit" type="button" value="Отправить">
 
-        {{ room_name|json_script:"room-name" }}
+        {{ data|json_script:'data' }}
     </div>
 {% endblock %}
 
 {% block scripts %}
     <script>
-        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+        const {roomName, username} = JSON.parse(document.getElementById('data').textContent);
 
         const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
 
