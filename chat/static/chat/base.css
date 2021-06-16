@@ -86,6 +86,11 @@ body {
     width: 60%;
 }
 
+.message-block > p{
+    margin: 0;
+    word-wrap: break-word;
+}
+
 .our-message {
     align-self: flex-end;
 }
