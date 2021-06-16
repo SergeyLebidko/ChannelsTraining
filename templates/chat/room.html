@@ -14,7 +14,7 @@
 
 {% block scripts %}
     <script>
-        const {roomName, username} = JSON.parse(document.getElementById('data').textContent);
+        const {roomName} = JSON.parse(document.getElementById('data').textContent);
 
         const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
 

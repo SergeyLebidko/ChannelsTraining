@@ -8,8 +8,7 @@ def index(request):
 def room(request, room_name):
     context = {
         'data': {
-            'roomName': room_name,
-            'username': 'UserName'
+            'roomName': room_name
         }
     }
     return render(request, 'chat/room.html', context=context)
