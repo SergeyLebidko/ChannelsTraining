@@ -91,6 +91,11 @@ body {
     word-wrap: break-word;
 }
 
+.message-block > h5 {
+    margin: 0 0 10px 0;
+    border-bottom: 1px dashed white;
+}
+
 .our-message {
     align-self: flex-end;
 }

@@ -20,11 +20,12 @@
 
         chatSocket.onmessage = event => {
             const data = JSON.parse(event.data);
-            let text = document.createElement('p');
-            text.textContent = data.message;
 
             let messageBlock = document.createElement('div');
-            messageBlock.append(text);
+            messageBlock.insertAdjacentHTML(
+                'beforeend',
+                `<h5>${data.username}</h5><p>${data.message}</p>`
+            );
 
             messageBlock.classList.add('message-block', 'our-message');
             document.querySelector('.chat-log').append(messageBlock);
