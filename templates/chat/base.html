@@ -8,10 +8,20 @@
     <link rel="stylesheet" href="{% static 'chat/base.css' %}">
 </head>
 <body>
-{% block content %}
-{% endblock %}
+<div>
+    {% if user.is_anonymous %}
+        <a href="{% url 'login' %}">Войти</a>
+    {% else %}
+        Добро пожаловать, {{ user }}!
+        <a href="{% url 'logout' %}">Выйти</a>
+    {% endif %}
+</div>
+{% if not user.is_anonymous %}
+    {% block content %}
+    {% endblock %}
 
-{% block scripts %}
-{% endblock %}
+    {% block scripts %}
+    {% endblock %}
+{% endif %}
 </body>
 </html>

@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.contrib.auth.views import LoginView, LogoutView
 
 
 def index(request):
@@ -14,3 +16,11 @@ def room(request, room_name):
         }
     }
     return render(request, 'chat/room.html', context=context)
+
+
+class Login(LoginView):
+    template_name = 'chat/login.html'
+
+
+class Logout(LogoutView):
+    next_page = reverse_lazy('chat:index')
