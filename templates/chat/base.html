@@ -19,6 +19,8 @@
     {% endif %}
 </div>
 {% if not user.is_anonymous %}
+    <script type="text/javascript" src="{% static 'chat/utils.js' %}"></script>
+
     {% block content %}
     {% endblock %}
 
