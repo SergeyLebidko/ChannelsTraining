@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.models import User
 
 from .forms import RegisterForm
 
@@ -32,5 +35,15 @@ def register(request):
     context = {}
     if request.method == 'GET':
         form = RegisterForm()
-        context['form'] = form
+    elif request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            User.objects.create_user(username, password=password)
+            return HttpResponseRedirect(reverse('login'))
+
+    context['form'] = form
     return render(request, 'chat/register.html', context=context)

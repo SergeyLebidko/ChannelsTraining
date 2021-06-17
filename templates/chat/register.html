@@ -13,8 +13,20 @@
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Зарегистрироваться">
+        <input type="button" id="register-button" value="Зарегистрироваться">
     </form>
 </div>
+<script>
+    document.querySelector('input[name=username]').focus();
+
+    document.querySelector('input[type=button]').onclick = event => {
+        event.preventDefault();
+
+        let username = document.querySelector('input[name=username]').value;
+        if (!validateString(username)) return;
+
+        document.querySelector('form').submit();
+    }
+</script>
 </body>
 </html>

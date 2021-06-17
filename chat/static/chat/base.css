@@ -47,6 +47,18 @@ body {
     max-width: 800px;
 }
 
+.errorlist {
+    background-color: orangered;
+    color: white;
+    border-radius: var(--border-radius);
+    padding: var(--small-padding);
+}
+
+.errorlist ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
 .chat-log {
     padding: var(--medium-padding);
     background-color: rgb(235, 235, 235);
