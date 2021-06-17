@@ -9,7 +9,11 @@
 </head>
 <body>
 <div class="container small-container">
-    Здесь будет форма регистрации
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Зарегистрироваться">
+    </form>
 </div>
 </body>
 </html>

@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 
+from .forms import RegisterForm
+
 
 def index(request):
     return render(request, 'chat/index.html', {})
@@ -27,4 +29,8 @@ class Logout(LogoutView):
 
 
 def register(request):
-    return render(request, 'chat/register.html', {})
+    context = {}
+    if request.method == 'GET':
+        form = RegisterForm()
+        context['form'] = form
+    return render(request, 'chat/register.html', context=context)
