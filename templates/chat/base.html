@@ -13,10 +13,11 @@
     {% if user.is_anonymous %}
         <a href="{% url 'login' %}">Войти</a>
         или
-        <a href="{% url 'register' %}">зарегистрироваться</a>
+        <a href="{% url 'register' %}">Зарегистрироваться</a>
     {% else %}
         Добро пожаловать, {{ user }}!
         <a href="{% url 'logout' %}">Выйти</a>
+        <a href="{% url 'admin:index' %}">Страница администратора</a>
     {% endif %}
 </div>
 {% if not user.is_anonymous %}
