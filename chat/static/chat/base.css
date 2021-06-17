@@ -18,11 +18,15 @@ body {
     box-shadow: 0 3px 7px 5px rgba(0, 0, 0, 0.1);
 }
 
+.container + .container {
+    margin-top: 20px;
+}
+
 .container * + * {
     margin-top: 10px;
 }
 
-.container input[type=text] {
+.container input[type=text], .container input[type=password] {
     width: 100%;
     box-sizing: border-box;
     padding: var(--small-padding);
@@ -31,7 +35,7 @@ body {
     border-radius: var(--border-radius);
 }
 
-.container input[type=button] {
+.container input[type=button], .container input[type=submit] {
     padding: var(--small-padding) var(--medium-padding);
 }
 

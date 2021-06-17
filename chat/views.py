@@ -24,3 +24,7 @@ class Login(LoginView):
 
 class Logout(LogoutView):
     next_page = reverse_lazy('chat:index')
+
+
+def register(request):
+    return render(request, 'chat/register.html', {})

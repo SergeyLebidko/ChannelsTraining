@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="{% static 'chat/base.css' %}">
 </head>
 <body>
-<div>
+<div class="container big-container">
     {% if user.is_anonymous %}
         <a href="{% url 'login' %}">Войти</a>
+        или
+        <a href="{% url 'register' %}">зарегистрироваться</a>
     {% else %}
         Добро пожаловать, {{ user }}!
         <a href="{% url 'logout' %}">Выйти</a>
