@@ -10,6 +10,18 @@ body {
     padding: var(--big-padding);
 }
 
+a {
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: gray;
+}
+
+a:hover {
+    color: black;
+}
+
 .container {
     background-color: white;
     margin: auto;
@@ -37,6 +49,15 @@ body {
 
 .container input[type=button], .container input[type=submit] {
     padding: var(--small-padding) var(--medium-padding);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-container > div {
+    margin-top: 0;
 }
 
 .small-container {

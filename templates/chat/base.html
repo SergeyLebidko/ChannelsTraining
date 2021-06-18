@@ -9,15 +9,18 @@
     <script type="text/javascript" src="{% static 'chat/utils.js' %}"></script>
 </head>
 <body>
-<div class="container big-container">
+<div class="container big-container header-container">
     {% if user.is_anonymous %}
-        <a href="{% url 'login' %}">Войти</a>
-        или
-        <a href="{% url 'register' %}">Зарегистрироваться</a>
+        <div>
+            <a href="{% url 'login' %}">Войти</a> | <a href="{% url 'register' %}">зарегистрироваться</a>
+        </div>
     {% else %}
-        Добро пожаловать, {{ user }}!
-        <a href="{% url 'logout' %}">Выйти</a>
-        <a href="{% url 'admin:index' %}">Страница администратора</a>
+        <div>
+            Добро пожаловать, {{ user }}!
+        </div>
+        <div>
+            <a href="{% url 'logout' %}">Выйти</a> | <a href="{% url 'admin:index' %}">Страница администратора</a>
+        </div>
     {% endif %}
 </div>
 {% if not user.is_anonymous %}
