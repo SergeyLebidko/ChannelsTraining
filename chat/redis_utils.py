@@ -1,6 +1,7 @@
 import redis
+from django.conf import settings
 
-redis_conn = redis.Redis()
+redis_conn = redis.Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT)
 
 
 def inc_room_count(room_name):
