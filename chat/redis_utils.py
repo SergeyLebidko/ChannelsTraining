@@ -18,3 +18,15 @@ def add_message(user, room_name, message):
 
 def get_room_list():
     """Возвращает названия всех комнат чата"""
+
+
+def create_counter_key(room_name):
+    """Возвращает ключ для счетчика участников в переданной комнате чата"""
+
+    return f'room:counter:{room_name}'
+
+
+def create_message_list_key(room_name):
+    """Возвращает ключ для списка сообщений комнаты чата"""
+
+    return f'room:message_list:{room_name}'
