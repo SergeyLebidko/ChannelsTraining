@@ -6,18 +6,24 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.models import User
 
 from .forms import RegisterForm
+from .redis_utils import get_room_list
 
 
 def index(request):
-    return render(request, 'chat/index.html', {})
+    room_list = get_room_list()
+    context = {
+        'room_list': room_list
+    }
+    return render(request, 'chat/index.html', context=context)
 
 
 def room(request, room_name):
     user = request.user
+
     context = {
         'data': {
             'roomName': room_name,
-            'username': user.username
+            'username': user.username,
         }
     }
     return render(request, 'chat/room.html', context=context)
