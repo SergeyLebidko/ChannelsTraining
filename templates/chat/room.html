@@ -3,7 +3,23 @@
 {% block content %}
     <div class="container big-container">
         <!-- Элемент для вывода всех сообщений чата -->
-        <div class="chat-log"></div>
+        <div class="chat-log">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.username == user.username %}
+                        <div class="message-block our-message">
+                            <h5>{{ message.username }}</h5>
+                            <p>{{ message.message }}</p>
+                        </div>
+                    {% else %}
+                        <div class="message-block other-message">
+                            <h5>{{ message.username }}</h5>
+                            <p>{{ message.message }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
 
         <input id="chat-message-input" type="text" size="100">
         <input id="chat-message-submit" type="button" value="Отправить">

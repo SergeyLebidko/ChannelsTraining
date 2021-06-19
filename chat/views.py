@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.models import User
 
 from .forms import RegisterForm
-from .redis_utils import get_room_list
+from .redis_utils import get_room_list, get_messages
 
 
 def index(request):
@@ -19,12 +19,14 @@ def index(request):
 
 def room(request, room_name):
     user = request.user
+    messages = get_messages(room_name)
 
     context = {
         'data': {
             'roomName': room_name,
             'username': user.username,
-        }
+        },
+        'messages': messages
     }
     return render(request, 'chat/room.html', context=context)
 
