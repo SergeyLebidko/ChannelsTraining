@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from chat.views import Login, Logout, register
 
+from django.conf import settings
+from django.contrib.staticfiles.views import serve
+from django.views.static import serve as media_serve
+
 urlpatterns = [
     path('chat/', include('chat.urls')),
     path('admin/', admin.site.urls),
@@ -24,3 +28,7 @@ urlpatterns = [
     path('logout/', Logout.as_view(), name='logout'),
     path('register/', register, name='register')
 ]
+
+if not settings.DEBUG:
+    urlpatterns.append(path('static/<path:path>/', serve, {'insecure': True}))
+    urlpatterns.append(path('media/<path:path>/', media_serve, {'document_root': settings.MEDIA_ROOT}))
