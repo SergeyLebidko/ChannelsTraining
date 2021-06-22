@@ -11,16 +11,12 @@ def inc_room_count(room_name):
     counter_key = create_counter_key(room_name)
     counter_value = redis_conn.incr(counter_key)
 
-    print(f'Увеличиваем счетчик: Количество участников в {room_name}', counter_value)
-
 
 def dec_room_count(room_name):
     """Уменьшает счетчик участников в комнате чата"""
 
     counter_key = create_counter_key(room_name)
     counter_value = redis_conn.decr(counter_key)
-
-    print(f'Уменьшаем счетчик: Количество участников в {room_name}', counter_value)
 
     # Если после выхода участника в чате не осталось других участников - удаляем список сообщений чата
     if counter_value == 0:
@@ -56,10 +52,15 @@ def get_room_list():
     """Возвращает названия всех комнат чата"""
 
     result = []
-    message_lists = redis_conn.keys('room:counter:*')
+    counters = redis_conn.keys('room:counter:*')
 
-    for message_list in message_lists:
-        result.append(bytes.decode(message_list, 'utf-8').split(':')[2])
+    for counter in counters:
+        room_name = bytes.decode(counter, 'utf-8').split(':')[2]
+        user_count = bytes.decode(redis_conn.get(counter), 'utf-8')
+        result.append({
+            'room_name': room_name,
+            'user_count': user_count
+        })
 
     return result
 

@@ -10,8 +10,8 @@
             <ul>
                 {% for room in room_list %}
                     <li>
-                        <a href="{% url 'chat:room' room %}">
-                            {{ room }}
+                        <a href="{% url 'chat:room' room.room_name %}">
+                            {{ room.room_name }}({{ room.user_count }})
                         </a>
                     </li>
                 {% endfor %}
