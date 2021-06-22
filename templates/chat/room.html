@@ -34,7 +34,6 @@
     <script>
         const {roomName, username} = JSON.parse(document.getElementById('data').textContent);
 
-        console.log(roomName)
         document.getElementById('room-name-block').innerText = roomName;
 
         const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
@@ -58,15 +57,12 @@
             document.querySelector('.chat-log').append(messageBlock);
 
             // При получении сообщения прокручиваем окно чата вниз
-            let logElement = document.querySelector('.chat-log');
-            logElement.scrollTo(0, logElement.scrollHeight);
+            scrollChatLog();
         };
 
         chatSocket.onclose = () => {
             console.error('WebSocket чата закрылся...');
         };
-
-        document.querySelector('#chat-message-input').focus();
 
         bindEnterHandler(document.querySelector('#chat-message-submit'), document.querySelector('#chat-message-input'));
 
@@ -79,5 +75,14 @@
             }));
             messageInputDom.value = '';
         };
+
+        document.querySelector('#chat-message-input').focus();
+
+        scrollChatLog();
+
+        function scrollChatLog() {
+            let logElement = document.querySelector('.chat-log');
+            logElement.scrollTo(0, logElement.scrollHeight);
+        }
     </script>
 {% endblock %}
