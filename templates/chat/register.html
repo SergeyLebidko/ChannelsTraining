@@ -24,6 +24,12 @@
 <script>
     document.querySelector('input[name=username]').focus();
 
+    bindEnterHandler(
+        document.querySelector('#register-button'),
+        document.querySelector('#id_username'),
+        document.querySelector('#id_password')
+    );
+
     document.querySelector('input[type=button]').onclick = event => {
         event.preventDefault();
 

@@ -58,16 +58,12 @@
         };
 
         chatSocket.onclose = () => {
-            console.error('WebSocket чата неожиданно закрылся...');
+            console.error('WebSocket чата закрылся...');
         };
 
         document.querySelector('#chat-message-input').focus();
 
-        document.querySelector('#chat-message-input').onkeyup = event => {
-            if (event.keyCode === 13) {
-                document.querySelector('#chat-message-submit').click();
-            }
-        };
+        bindEnterHandler(document.querySelector('#chat-message-submit'), document.querySelector('#chat-message-input'));
 
         document.querySelector('#chat-message-submit').onclick = () => {
             const messageInputDom = document.querySelector('#chat-message-input');

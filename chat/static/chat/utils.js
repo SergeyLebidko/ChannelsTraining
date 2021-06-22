@@ -11,3 +11,13 @@ function validateString(str) {
 
     return true;
 }
+
+function bindEnterHandler(actionElement, ...elements) {
+    elements.forEach(element => {
+        element.onkeyup = event => {
+            if (event.keyCode === 13) {
+                actionElement.click();
+            }
+        }
+    })
+}
