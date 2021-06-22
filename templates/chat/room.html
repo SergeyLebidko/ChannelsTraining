@@ -2,6 +2,8 @@
 
 {% block content %}
     <div class="container big-container">
+        <div class="room-name-block" id="room-name-block"></div>
+
         <!-- Элемент для вывода всех сообщений чата -->
         <div class="chat-log">
             {% if messages %}
@@ -31,6 +33,9 @@
 {% block scripts %}
     <script>
         const {roomName, username} = JSON.parse(document.getElementById('data').textContent);
+
+        console.log(roomName)
+        document.getElementById('room-name-block').innerText = roomName;
 
         const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
 

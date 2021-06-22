@@ -74,6 +74,11 @@ ul {
     max-width: 800px;
 }
 
+.room-name-block {
+    color: gray;
+    border-bottom: 1px dashed lightgray;
+}
+
 .errorlist {
     background-color: orangered;
     color: white;
